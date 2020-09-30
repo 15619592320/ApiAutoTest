@@ -1,0 +1,43 @@
+#服务器异常注册失败
+- data: {"pwd":"123456","regname":"Joe"}
+  expect: {"status":"0","code":"20103","data":{},"msg":"手机号不能为空"}
+
+#mobilephone为空时,注册失败
+- data: {"pwd":"123456","regname":"Joe"}
+  expect: {"status":0,"code":20103,"data":{},"msg":"手机号不能为空"}
+
+#password为空时注册失败
+- data: {"mobilephone":"15619592320","regname":"Joe"}
+  expect: {"status":"0","code":"20103","data":{},"msg":"密码不能为空"}
+
+#参数为空时注册失败
+- data: {"pwd":"123456","regname":"Joe"}
+  expect: {"status":"0","code":"20103","data":{},"msg":"手机号不能为空"}
+
+#pwd长度为5时注册失败
+- data: {"mobilephone":"15619592320","pwd":"12345","regname":"Joe"}
+  expect: {"status":"0","code":"20108","data": {},"msg":"密码长度必须为6~18"}
+
+#pwd长度为19时注册失败
+- data: {"mobilephone":"15619592320","pwd":"abcdefghij123456789","regname":"Joe"}
+  expect: {"status":"0","code":"20108","data": {},"msg":"密码长度必须为6~18"}
+
+#mobilephone小于11位时注册失败
+- data: {"mobilephone":"1561959232","pwd":"123456","regname":"Joe"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}
+
+#mobilephone大于11位时注册失败
+- data: {"mobilephone":"156195923201","pwd":"123456","regname":"Joe"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}
+
+#mobilephone含特殊字符时注册失败
+- data: {"mobilephone":"1561959232a","pwd":"123456","regname":"Joe"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}
+
+#手机号码已被注册时登录失败
+- data: {"mobilephone":"1561959232a","pwd":"123456","regname":"Joe"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}
+
+#非手机段格式时登录失败
+- data: {"mobilephone":"00012121101","pwd":"123456","regname":"Joe"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}

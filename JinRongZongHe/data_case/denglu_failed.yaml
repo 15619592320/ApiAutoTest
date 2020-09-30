@@ -1,0 +1,20 @@
+# 3、手机号正确，密码不正确，登录失败
+- data: {"mobilephone":"1806666888","pwd":"ASDFGH"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+
+# 4、手机号不正确，登录失败
+- data: {"mobilephone":"18066668885","pwd":"123456"}
+  expect: {"code":20110,"data":{},"msg":"手机号码已被注册","status":0}
+
+# 5、手机号正确，密码为空，登录失败
+- data: {"mobilephone":"18066668888"}
+  expect: {"code":20103,"data":{},"msg":"密码不能为空","status":0}
+
+# 6、手机号为空，登录失败
+- data: {"pwd":"123456"}
+  expect: {"code":20103,"data":{},"msg":"手机号不能为空","status":0}
+
+
+
+
+

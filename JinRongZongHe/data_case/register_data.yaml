@@ -1,0 +1,63 @@
+#有昵称可以注册成功
+ - "data":{"mobilephone":"15619592320","pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"1","code":"10001","data": {NULL},"msg":"注册成功"}
+
+#无昵称注册成功
+ - "data":{"mobilephone":"15619592320","pwd":"123456"}
+ - "expect":{"status":"1","code":"10001","data": {NULL},"msg":"注册成功"}
+
+#注册用户时输入合理的手机号、用户名、6位密码，注册成功
+ - "data":{"mobilephone":"15619592320","pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"1","code":"10001","data": {NULL},"msg":"注册成功"}
+
+#注册用户时输入合理的手机号、用户名、8位密码，注册成功
+ - "data":{"mobilephone":"15619592320","pwd":"12345678","regname":"Joe"}
+ - "expect":{"status":"1","code":"10001","data": {NULL},"msg":"注册成功"}
+
+#注册用户时输入合理的手机号、用户名、18位密码，注册成功
+ - "data":{"mobilephone":"15619592320","pwd":"abcdefghi123456789","regname":"Joe"}
+ - "expect":{"status":"1","code":"10001","data": {NULL},"msg":"注册成功"}
+
+#服务器异常注册失败
+ - "data":{}
+ - "expect":{"status":"0","code":"20102","data": {NULL},"msg":"服务器异常"}
+
+#mobilephone为空时,注册失败
+ - "data":{"pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"0","code":"20103"，data": {NULL},"msg":"参数错误：参数不能为空"}
+
+#password为空时注册失败
+ - "data":{"mobilephone":"15619592320","regname":"Joe"}
+ - "expect":{"status":"0","code":"20103"，data": {NULL},"msg":"参数错误：参数不能为空"}
+
+#参数为空时注册失败
+ - "data":{}
+ - "expect":{"status":"0","code":"20103"，data": {NULL},"msg":"参数错误：参数不能为空"}
+
+#pwd长度为5时注册失败
+ - "data":{"mobilephone":"15619592320","pwd":"12345","regname":"Joe"}
+ - "expect":{"status":"0","code":"20108"，data": {NULL},"msg":"参数错误：密码长度必须为6~18"}
+
+#pwd长度为19时注册失败
+ - "data":{"mobilephone":"15619592320","pwd":"abcdefghij123456789","regname":"Joe"}
+ - "expect":{"status":"0","code":"20108"，data": {NULL},"msg":"参数错误：密码长度必须为6~18"}
+
+#mobilephone小于11位时注册失败
+ - "data":{"mobilephone":"1561959232","pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"0","code":"20109"，data": {NULL},"msg":"手机号码格式不正确"}
+
+#mobilephone大于11位时注册失败
+ - "data":{"mobilephone":"156195923201","pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"0","code":"20109"，data": {NULL},"msg":"手机号码格式不正确"}
+
+#mobilephone含特殊字符时注册失败
+ - "data":{"mobilephone":"1561959232a","pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"0","code":"20109"，data": {NULL},"msg":"手机号码格式不正确"}
+
+#手机号码已被注册时登录失败
+ - "data":{"mobilephone":"1561959232a","pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"0","code":"20109"，data": {NULL},"msg":"手机号码格式不正确"}
+
+#非手机段格式时登录失败
+ - "data":{"mobilephone":"00012121101","pwd":"123456","regname":"Joe"}
+ - "expect":{"status":"0","code":"20109"，data": {NULL},"msg":"手机号码格式不正确"}

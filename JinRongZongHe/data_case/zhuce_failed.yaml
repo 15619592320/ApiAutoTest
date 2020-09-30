@@ -1,0 +1,36 @@
+# 3、手机号正确，密码5位，注册失败
+- data: {"mobilephone":"18066668887","pwd":"12345"}
+  expect: {"code":"20108","data":{},"msg":"密码长度必须为6~18","status":0}
+
+# 4、手机号正确，密码19位，注册失败
+- data: {"mobilephone":"18066668887","pwd":"123456asdfghASDFGHJ"}
+  expect: {"code":"20108","data":{},"msg":"密码长度必须为6~18","status":0}
+
+# 5、手机号正确，密码为空，注册失败
+- data: {"mobilephone":"18066668887"}
+  expect: {"code":"20103","data":{},"msg":"参数错误：参数不能为空","status":0}
+
+# 6、手机号为空，密码正确，注册失败
+- data: {"pwd":"123456"}
+  expect: {"code":"20103","data":{},"msg":"参数错误：参数不能为空","status":0}
+
+# 7、手机号为10位，密码正确，注册失败
+- data: {"mobilephone":"1806666888","pwd":"123456"}
+  expect: {"code":"20109","data":{},"msg":"手机号码格式不正确","status":0}
+
+# 8、手机号为12位，密码正确，注册失败
+- data: {"mobilephone":"180666688871","pwd":"123456"}
+  expect: {"code":"20109","data":{},"msg":"手机号码格式不正确","status":0}
+
+# 9、手机号有非整数，密码正确，注册失败
+- data: {"mobilephone":"1806666888q","pwd":"123456"}
+  expect: {"code":"20109","data":{},"msg":"手机号码格式不正确","status":0}
+
+# 10、手机号不符合手机号规则，密码正确，注册失败
+- data: {"mobilephone":"11111111111","pwd":"123456"}
+  expect: {"code":"20109","data":{},"msg":"手机号码格式不正确","status":0}
+
+# 11、手机号已注册过，密码格式正确，注册失败
+- data: {"mobilephone":"18066668888","pwd":"123456"}
+  expect: {"code":"20110","data":{},"msg":"手机号码已被注册","status":0}
+

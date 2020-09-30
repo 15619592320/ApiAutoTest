@@ -1,0 +1,7 @@
+# 1、手机号正确，密码6位，无昵称注册成功（借款人）
+- data: {"mobilephone":"18066668888","pwd":"123456"}
+  expect: {"code":"20110","data":{},"msg":"手机号码已被注册","status":0}
+
+# 2、手机号正确，密码18位，昵称为1位注册成功（投资人）
+- data: {"mobilephone":"18066668889","pwd":"123456asdfghASDFGH","regname":"r"}
+  expect: {"code":"20110","data":{},"msg":"手机号码已被注册","status":0}
